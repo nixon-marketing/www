@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nixon Marketing - Coming Soon</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <style>
+        :root {
+            --primary: #f9a826;
+            --dark: #222;
+            --light: #f8f9fa;
+            --gray: #6c757d;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: var(--dark);
+            color: var(--light);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+        
+        header {
+            padding: 2rem 0;
+            width: 100%;
+        }
+        
+        .logo {
+            max-width: 250px;
+            margin: 0 auto;
+        }
+        
+        .main-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 3rem 0;
+            text-align: center;
+            flex: 1;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            font-weight: 700;
+        }
+        
+        .highlight {
+            color: var(--primary);
+        }
+        
+        .subheading {
+            font-size: 1.5rem;
+            margin-bottom: 2.5rem;
+            color: var(--gray);
+            max-width: 700px;
+            line-height: 1.6;
+        }
+        
+        .profile {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            margin: 2rem auto;
+            border: 4px solid var(--primary);
+        }
+        
+        .value-props {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+            width: 100%;
+        }
+        
+        .value-prop {
+            background-color: rgba(255, 255, 255, 0.05);
+            padding: 1.5rem;
+            border-radius: 10px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .value-prop:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+        
+        .value-prop i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .value-prop h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .value-prop p {
+            color: var(--gray);
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+            text-decoration: none;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--dark);
+            font-weight: 600;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            border-radius: 50px;
+            margin-top: 2rem;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary);
+        }
+        
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--primary);
+        }
+        
+        .email-form {
+            margin-top: 3rem;
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        .email-form h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group {
+            display: flex;
+            margin-top: 1rem;
+        }
+        
+        .form-group input {
+            flex: 1;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px 0 0 50px;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+        }
+        
+        .form-group button {
+            background-color: var(--primary);
+            color: var(--dark);
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 50px 50px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group button:hover {
+            background-color: #e09015;
+        }
+        
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .progress-container {
+            width: 100%;
+            max-width: 500px;
+            margin-top: 2rem;
+        }
+        
+        .progress-container p {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+        }
+        
+        .progress-bar {
+            height: 8px;
+            background-color: rgba(255, 255, 255, 0.1);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            width: 35%;
+            background-color: var(--primary);
+            border-radius: 4px;
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .subheading {
+                font-size: 1.2rem;
+            }
+            
+            .value-props {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite ease-in-out;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">
+                <img src="https://raw.githubusercontent.com/nixon-marketing/www/51311a5f1eff1b20ff9447da4e5783962497b110/assets/logo.svg" alt="Nixon Marketing Logo" width="100%">
+            </div>
+        </header>
+        
+        <div class="main-content">
+            <h1>Our New Website is <span class="highlight">Coming Soon</span></h1>
+            <p class="subheading">We're working hard to bring you a brand new experience. In the meantime, connect with us on social media or drop us an email.</p>
+            
+            <img src="https://raw.githubusercontent.com/nixon-marketing/www/51311a5f1eff1b20ff9447da4e5783962497b110/assets/profile.svg" alt="Nicole Renney" class="profile">
+            
+            <div class="value-props">
+                <div class="value-prop">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Strategic Brand Development</h3>
+                    <p>Transform your brand identity and position you for success in today's competitive market.</p>
+                </div>
+                <div class="value-prop">
+                    <i class="fas fa-globe"></i>
+                    <h3>Digital Marketing Expertise</h3>
+                    <p>Navigate the online landscape with targeted campaigns that reach your ideal audience.</p>
+                </div>
+                <div class="value-prop">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>Creative Content Solutions</h3>
+                    <p>Tell your story through compelling visuals and messaging that resonates with your customers.</p>
+                </div>
+                <div class="value-prop">
+                    <i class="fas fa-chart-pie"></i>
+                    <h3>Data-Informed Insights</h3>
+                    <p>Make better decisions with actionable analytics that drive meaningful business results.</p>
+                </div>
+            </div>
+            
+            <div class="progress-container">
+                <p>
+                    <span>Website Development Progress</span>
+                    <span>35%</span>
+                </p>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+            
+            <a href="mailto:info@nixonmarketing.co.za" class="cta-button pulse">Get In Touch</a>
+            
+            <div class="email-form">
+                <h3>Stay Updated</h3>
+                <p>Subscribe to receive a notification when our new website launches.</p>
+                <div class="form-group">
+                    <input type="email" placeholder="Your Email Address">
+                    <button type="submit">Subscribe</button>
+                </div>
+            </div>
+            
+            <div class="social-links">
+                <a href="https://www.instagram.com/_nixon_marketing_/" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/nicolerenney/" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="mailto:info@nixonmarketing.co.za" aria-label="Email">
+                    <i class="far fa-envelope"></i>
+                </a>
+                <a href="https://github.com/nixon-marketing/www" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+            </div>
+        </div>
+        
+        <footer>
+            <p>&copy; 2025 Nixon Marketing. All rights reserved.</p>
+            <p>Made with ❤️ in South Africa</p>
+        </footer>
+    </div>
+</body>
+</html>
