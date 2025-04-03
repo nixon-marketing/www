@@ -4,7 +4,7 @@
     <!-- Preload key assets -->
     <link rel="preload" as="image" href="https://raw.githubusercontent.com/nixon-marketing/www/51311a5f1eff1b20ff9447da4e5783962497b110/assets/logo.svg" importance="high">
     <link rel="preload" as="image" href="https://raw.githubusercontent.com/nixon-marketing/www/51311a5f1eff1b20ff9447da4e5783962497b110/assets/profile.svg" importance="high">
-    <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/nixon-marketing/www/51311a5f1eff1b20ff9447da4e5783962497b110/assets/logo.svg">
+    <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/nixon-marketing/www/05722c769ad0e41b69c46740e77a66cf7226eb73/assets/favicon.svg">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
     <meta name="description" content="Nixon Marketing offers strategic brand development and data-driven digital marketing solutions to help your business grow. Expert consultancy by Nicole Renney.">
@@ -964,4 +964,14 @@
             const progressContainer = document.querySelector('.progress-container');
             progressContainer.addEventListener('click', function() {
                 const currentProgress = parseInt(progressText.textContent);
-                const newProgress = (currentProgress +
+                const newProgress = (currentProgress + 5) % 105;
+                
+                if (newProgress === 0) {
+                    progressText.textContent = "5%";
+                    progressBar.style.width = "5%";
+                } else {
+                    progressText.textContent = newProgress + "%";
+                    progressBar.style.width = newProgress + "%";
+                }
+            });
+        });
