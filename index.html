@@ -1,10 +1,36 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Preload key assets -->
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/nixon-marketing/www/51311a5f1eff1b20ff9447da4e5783962497b110/assets/logo.svg" importance="high">
+    <link rel="preload" as="image" href="https://raw.githubusercontent.com/nixon-marketing/www/51311a5f1eff1b20ff9447da4e5783962497b110/assets/profile.svg" importance="high">
+    <link rel="icon" type="image/svg+xml" href="https://raw.githubusercontent.com/nixon-marketing/www/51311a5f1eff1b20ff9447da4e5783962497b110/assets/logo.svg">
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nixon Marketing - Coming Soon</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="Nixon Marketing offers strategic brand development and data-driven digital marketing solutions to help your business grow. Expert consultancy by Nicole Renney.">
+    <meta name="keywords" content="marketing agency, strategic branding, digital marketing, content marketing, South Africa, brand development, marketing consultancy, Nicole Renney">
+    <meta name="author" content="Nixon Marketing">
+    <meta name="theme-color" content="#222222">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://nixonmarketing.co.za/">
+    <meta property="og:title" content="Nixon Marketing - Strategic Brand Development & Digital Marketing">
+    <meta property="og:description" content="Nixon Marketing offers strategic brand development and data-driven digital marketing solutions to help your business grow.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/nixon-marketing/www/51311a5f1eff1b20ff9447da4e5783962497b110/assets/logo.svg">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://nixonmarketing.co.za/">
+    <meta property="twitter:title" content="Nixon Marketing - Strategic Brand Development & Digital Marketing">
+    <meta property="twitter:description" content="Nixon Marketing offers strategic brand development and data-driven digital marketing solutions to help your business grow.">
+    <meta property="twitter:image" content="https://raw.githubusercontent.com/nixon-marketing/www/51311a5f1eff1b20ff9447da4e5783962497b110/assets/logo.svg">
+    
+    <!-- Canonical URL -->
+    <meta rel="canonical" href="https://nixonmarketing.co.za/">
+    
+    <title>Nixon Marketing - Strategic Brand Development & Digital Marketing Solutions</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" media="print" onload="this.media='all'">
     <style>
         :root {
             --primary: #f9a826;
@@ -27,6 +53,20 @@
             display: flex;
             flex-direction: column;
             overflow-x: hidden;
+            -webkit-text-size-adjust: 100%;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            text-rendering: optimizeLegibility;
+        }
+        
+        .particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            pointer-events: none;
         }
         
         .container {
@@ -39,6 +79,8 @@
             justify-content: center;
             align-items: center;
             text-align: center;
+            position: relative;
+            z-index: 1;
         }
         
         header {
@@ -49,6 +91,30 @@
         .logo {
             max-width: 250px;
             margin: 0 auto;
+            height: auto;
+            width: 100%;
+            transition: transform 0.5s ease;
+            cursor: pointer;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+            filter: drop-shadow(0 0 8px rgba(249, 168, 38, 0.6));
+        }
+        
+        .animated-gradient {
+            background: linear-gradient(270deg, var(--primary), #ff7e5f, #feb47b);
+            background-size: 600% 600%;
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: gradientShift 8s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50% }
+            50% { background-position: 100% 50% }
+            100% { background-position: 0% 50% }
         }
         
         .main-content {
@@ -65,10 +131,32 @@
             font-size: 3rem;
             margin-bottom: 1.5rem;
             font-weight: 700;
+            position: relative;
+            overflow: hidden;
         }
         
         .highlight {
             color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .highlight::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: var(--primary);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.6s ease;
+        }
+        
+        h1:hover .highlight::after {
+            transform: scaleX(1);
+            transform-origin: left;
         }
         
         .subheading {
@@ -85,6 +173,30 @@
             border-radius: 50%;
             margin: 2rem auto;
             border: 4px solid var(--primary);
+            transition: all 0.5s ease;
+            cursor: pointer;
+            position: relative;
+        }
+        
+        .profile:hover {
+            transform: scale(1.1) rotate(5deg);
+            box-shadow: 0 0 20px rgba(249, 168, 38, 0.6);
+        }
+        
+        .profile::before {
+            content: 'Nicole Renney';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: transparent;
+            font-weight: bold;
+            transition: color 0.3s ease;
+            pointer-events: none;
+        }
+        
+        .profile:hover::before {
+            color: white;
         }
         
         .value-props {
@@ -99,120 +211,75 @@
             background-color: rgba(255, 255, 255, 0.05);
             padding: 1.5rem;
             border-radius: 10px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            border: 1px solid transparent;
         }
         
         .value-prop:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            border-color: rgba(249, 168, 38, 0.3);
+        }
+        
+        .value-prop::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at center, rgba(249, 168, 38, 0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            z-index: -1;
+        }
+        
+        .value-prop:hover::before {
+            opacity: 1;
         }
         
         .value-prop i {
             font-size: 2.5rem;
             color: var(--primary);
             margin-bottom: 1rem;
+            transition: transform 0.5s ease;
+        }
+        
+        .value-prop:hover i {
+            transform: scale(1.2);
+            animation: bounce 1s ease infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0) scale(1.2); }
+            50% { transform: translateY(-10px) scale(1.2); }
         }
         
         .value-prop h3 {
             font-size: 1.2rem;
             margin-bottom: 0.8rem;
+            transition: color 0.3s ease;
+        }
+        
+        .value-prop:hover h3 {
+            color: var(--primary);
         }
         
         .value-prop p {
             color: var(--gray);
             font-size: 0.9rem;
             line-height: 1.5;
+            transform: translateY(20px);
+            opacity: 0.7;
+            transition: all 0.4s ease;
         }
         
-        .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-        
-        .social-links a {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            color: var(--light);
-            font-size: 1.3rem;
-            transition: all 0.3s ease;
-            text-decoration: none;
-        }
-        
-        .social-links a:hover {
-            background-color: var(--primary);
-            transform: translateY(-3px);
-        }
-        
-        .cta-button {
-            display: inline-block;
-            background-color: var(--primary);
-            color: var(--dark);
-            font-weight: 600;
-            padding: 0.8rem 2rem;
-            font-size: 1rem;
-            border-radius: 50px;
-            margin-top: 2rem;
-            text-decoration: none;
-            transition: all 0.3s ease;
-            border: 2px solid var(--primary);
-        }
-        
-        .cta-button:hover {
-            background-color: transparent;
-            color: var(--primary);
-        }
-        
-        .email-form {
-            margin-top: 3rem;
-            width: 100%;
-            max-width: 500px;
-        }
-        
-        .email-form h3 {
-            margin-bottom: 1rem;
-        }
-        
-        .form-group {
-            display: flex;
-            margin-top: 1rem;
-        }
-        
-        .form-group input {
-            flex: 1;
-            padding: 0.8rem 1.5rem;
-            border-radius: 50px 0 0 50px;
-            border: none;
-            outline: none;
-            font-size: 1rem;
-        }
-        
-        .form-group button {
-            background-color: var(--primary);
-            color: var(--dark);
-            border: none;
-            padding: 0 1.5rem;
-            border-radius: 0 50px 50px 0;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        
-        .form-group button:hover {
-            background-color: #e09015;
-        }
-        
-        footer {
-            padding: 2rem 0;
-            text-align: center;
-            color: var(--gray);
-            font-size: 0.9rem;
+        .value-prop:hover p {
+            transform: translateY(0);
+            opacity: 1;
         }
         
         .progress-container {
@@ -233,13 +300,350 @@
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 4px;
             overflow: hidden;
+            position: relative;
         }
         
         .progress-fill {
             height: 100%;
             width: 35%;
-            background-color: var(--primary);
+            background: linear-gradient(90deg, var(--primary), #ff7e5f);
+            background-size: 200% 100%;
             border-radius: 4px;
+            position: relative;
+            animation: progressPulse 3s infinite;
+        }
+        
+        @keyframes progressPulse {
+            0% { background-position: 0% 50% }
+            50% { background-position: 100% 50% }
+            100% { background-position: 0% 50% }
+        }
+        
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 15px;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.7);
+            filter: blur(5px);
+            animation: progressGlow 3s ease-in-out infinite;
+        }
+        
+        @keyframes progressGlow {
+            0%, 100% { opacity: 0.3; }
+            50% { opacity: 0.7; }
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .social-links a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--light);
+            font-size: 1.3rem;
+            transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            text-decoration: none;
+            position: relative;
+        }
+        
+        .social-links a:hover {
+            background-color: var(--primary);
+            transform: translateY(-5px) rotate(360deg);
+            color: var(--dark);
+            box-shadow: 0 5px 15px rgba(249, 168, 38, 0.4);
+        }
+        
+        .social-links a::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            left: -5px;
+            right: -5px;
+            bottom: -5px;
+            border-radius: 50%;
+            border: 2px solid var(--primary);
+            opacity: 0;
+            transform: scale(1.2);
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover::before {
+            opacity: 0.5;
+            transform: scale(1);
+        }
+        
+        .social-links a .tooltip {
+            position: absolute;
+            top: -40px;
+            background-color: var(--primary);
+            color: var(--dark);
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8rem;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        
+        .social-links a .tooltip::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-width: 5px 5px 0;
+            border-style: solid;
+            border-color: var(--primary) transparent transparent;
+        }
+        
+        .social-links a:hover .tooltip {
+            opacity: 1;
+            visibility: visible;
+            top: -50px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary);
+            color: var(--dark);
+            font-weight: 600;
+            padding: 0.8rem 2rem;
+            font-size: 1rem;
+            border-radius: 50px;
+            margin-top: 2rem;
+            text-decoration: none;
+            transition: all 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            border: 2px solid var(--primary);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .cta-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+        
+        .cta-button:hover::before {
+            width: 100%;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(249, 168, 38, 0.3);
+        }
+        
+        .cta-button:active {
+            transform: translateY(0) scale(0.95);
+        }
+        
+        .pulse {
+            animation: pulse 2s infinite cubic-bezier(0.66, 0, 0, 1);
+            box-shadow: 0 0 0 0 rgba(249, 168, 38, 0.7);
+        }
+        
+        @keyframes pulse {
+            to {
+                box-shadow: 0 0 0 15px rgba(249, 168, 38, 0);
+            }
+        }
+        
+        .email-form {
+            margin-top: 3rem;
+            width: 100%;
+            max-width: 500px;
+            transition: all 0.5s ease;
+            position: relative;
+        }
+        
+        .email-form:hover {
+            transform: scale(1.02);
+        }
+        
+        .email-form h3 {
+            margin-bottom: 1rem;
+        }
+        
+        .form-group {
+            display: flex;
+            margin-top: 1rem;
+            position: relative;
+        }
+        
+        .form-group input {
+            flex: 1;
+            padding: 0.8rem 1.5rem;
+            border-radius: 50px 0 0 50px;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus {
+            box-shadow: 0 0 0 2px rgba(249, 168, 38, 0.5);
+        }
+        
+        .form-group button {
+            background: linear-gradient(90deg, var(--primary), #ff7e5f);
+            background-size: 200% 100%;
+            color: var(--dark);
+            border: none;
+            padding: 0 1.5rem;
+            border-radius: 0 50px 50px 0;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.5s ease;
+        }
+        
+        .form-group button:hover {
+            background-position: 100% 0;
+            box-shadow: 0 5px 15px rgba(249, 168, 38, 0.4);
+        }
+        
+        .success-message,
+        .error-message {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            right: 0;
+            padding: 0.5rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            transform: translateY(10px);
+            opacity: 0;
+            transition: all 0.5s ease;
+            pointer-events: none;
+        }
+        
+        .success-message {
+            background-color: rgba(40, 167, 69, 0.2);
+            color: #28a745;
+        }
+        
+        .error-message {
+            background-color: rgba(220, 53, 69, 0.2);
+            color: #dc3545;
+        }
+        
+        .show-message {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        footer {
+            padding: 2rem 0;
+            text-align: center;
+            color: var(--gray);
+            font-size: 0.9rem;
+            position: relative;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 50px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 3px;
+        }
+        
+        .powered-by {
+            margin-top: 1rem;
+            font-size: 0.8rem;
+            opacity: 0.7;
+            transition: opacity 0.3s ease;
+        }
+        
+        .powered-by:hover {
+            opacity: 1;
+        }
+        
+        .skunkworks {
+            font-weight: 600;
+            color: var(--light);
+            position: relative;
+            transition: all 0.3s ease;
+        }
+        
+        .skunkworks:hover {
+            color: var(--primary);
+            cursor: pointer;
+        }
+        
+        .typing-text {
+            display: inline-block;
+            border-right: 2px solid var(--primary);
+            white-space: nowrap;
+            overflow: hidden;
+            animation: typing 4s steps(40, end) infinite, blink-caret 0.75s step-end infinite;
+        }
+        
+        @keyframes typing {
+            0%, 100% { width: 0 }
+            50% { width: 100% }
+        }
+        
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--primary) }
+        }
+        
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        
+        @keyframes floating {
+            0%, 100% { transform: translateY(0) }
+            50% { transform: translateY(-10px) }
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--dark);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--primary);
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #e09015;
+        }
+        
+        .expanded {
+            transform: scale(1.03);
+            background-color: rgba(255, 255, 255, 0.1);
+            z-index: 2;
         }
         
         @media (max-width: 768px) {
@@ -254,56 +658,99 @@
             .value-props {
                 grid-template-columns: 1fr;
             }
+            
+            .container {
+                padding: 0 1.2rem;
+            }
+            
+            .profile {
+                width: 120px;
+                height: 120px;
+                margin: 1.5rem auto;
+            }
+            
+            .form-group {
+                flex-direction: column;
+            }
+            
+            .form-group input {
+                border-radius: 25px;
+                margin-bottom: 0.8rem;
+                width: 100%;
+                text-align: center;
+            }
+            
+            .form-group button {
+                border-radius: 25px;
+                width: 100%;
+                padding: 0.8rem;
+            }
+            
+            .social-links a .tooltip {
+                display: none;
+            }
         }
         
-        @keyframes pulse {
-            0% {
-                transform: scale(1);
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
             }
-            50% {
-                transform: scale(1.05);
+            
+            .subheading {
+                font-size: 1rem;
             }
-            100% {
-                transform: scale(1);
+            
+            .logo {
+                max-width: 200px;
             }
-        }
-        
-        .pulse {
-            animation: pulse 2s infinite ease-in-out;
+            
+            .value-prop {
+                padding: 1.2rem;
+            }
+            
+            .social-links {
+                gap: 1rem;
+            }
+            
+            .social-links a {
+                width: 40px;
+                height: 40px;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="logo">
-                <img src="https://raw.githubusercontent.com/nixon-marketing/www/51311a5f1eff1b20ff9447da4e5783962497b110/assets/logo.svg" alt="Nixon Marketing Logo" width="100%">
+    <div id="particles-js" class="particles-js" aria-hidden="true"></div>
+    <div class="container" role="main">
+        <header role="banner">
+            <div class="logo" id="logo" onclick="logoClick()">
+                <img src="https://raw.githubusercontent.com/nixon-marketing/www/51311a5f1eff1b20ff9447da4e5783962497b110/assets/logo.svg" alt="Nixon Marketing Logo - Strategic Brand Development and Digital Marketing Agency" width="100%" loading="eager">
             </div>
         </header>
         
         <div class="main-content">
             <h1>Our New Website is <span class="highlight">Coming Soon</span></h1>
-            <p class="subheading">We're working hard to bring you a brand new experience. In the meantime, connect with us on social media or drop us an email.</p>
+            <p class="subheading">We're working hard to bring you a <span class="animated-gradient">brand new experience</span>. In the meantime, connect with us on social media or drop us an email.</p>
             
-            <img src="https://raw.githubusercontent.com/nixon-marketing/www/51311a5f1eff1b20ff9447da4e5783962497b110/assets/profile.svg" alt="Nicole Renney" class="profile">
+            <img src="https://raw.githubusercontent.com/nixon-marketing/www/51311a5f1eff1b20ff9447da4e5783962497b110/assets/profile.svg" alt="Nicole Renney - Founder and Marketing Strategist at Nixon Marketing" class="profile" id="profile-img" onclick="profileClick()">
             
             <div class="value-props">
-                <div class="value-prop">
+                <div class="value-prop" onclick="toggleValueProp(this)">
                     <i class="fas fa-chart-line"></i>
                     <h3>Strategic Brand Development</h3>
                     <p>Transform your brand identity and position you for success in today's competitive market.</p>
                 </div>
-                <div class="value-prop">
+                <div class="value-prop" onclick="toggleValueProp(this)">
                     <i class="fas fa-globe"></i>
                     <h3>Digital Marketing Expertise</h3>
                     <p>Navigate the online landscape with targeted campaigns that reach your ideal audience.</p>
                 </div>
-                <div class="value-prop">
+                <div class="value-prop" onclick="toggleValueProp(this)">
                     <i class="fas fa-paint-brush"></i>
                     <h3>Creative Content Solutions</h3>
                     <p>Tell your story through compelling visuals and messaging that resonates with your customers.</p>
                 </div>
-                <div class="value-prop">
+                <div class="value-prop" onclick="toggleValueProp(this)">
                     <i class="fas fa-chart-pie"></i>
                     <h3>Data-Informed Insights</h3>
                     <p>Make better decisions with actionable analytics that drive meaningful business results.</p>
@@ -313,44 +760,208 @@
             <div class="progress-container">
                 <p>
                     <span>Website Development Progress</span>
-                    <span>35%</span>
+                    <span id="progress-percentage">35%</span>
                 </p>
                 <div class="progress-bar">
-                    <div class="progress-fill"></div>
+                    <div class="progress-fill" id="progress-bar-fill"></div>
                 </div>
             </div>
             
-            <a href="mailto:info@nixonmarketing.co.za" class="cta-button pulse">Get In Touch</a>
+            <a href="mailto:info@nixonmarketing.co.za" class="cta-button pulse" id="contact-btn">Get In Touch</a>
             
-            <div class="email-form">
+            <div class="email-form" id="subscribe-form">
                 <h3>Stay Updated</h3>
                 <p>Subscribe to receive a notification when our new website launches.</p>
-                <div class="form-group">
-                    <input type="email" placeholder="Your Email Address">
-                    <button type="submit">Subscribe</button>
-                </div>
+                <form id="subscription-form" onsubmit="submitForm(event)" aria-label="Subscription form for website launch notification">
+                    <div class="form-group">
+                        <input type="email" placeholder="Your Email Address" aria-label="Email subscription" name="email" id="email-input" required>
+                        <button type="submit" aria-label="Subscribe button">Subscribe</button>
+                    </div>
+                    <div id="success-message" class="success-message" aria-live="polite">Thanks for subscribing! We'll keep you updated.</div>
+                    <div id="error-message" class="error-message" aria-live="polite">Please try again. There was an error.</div>
+                </form>
             </div>
             
             <div class="social-links">
                 <a href="https://www.instagram.com/_nixon_marketing_/" target="_blank" aria-label="Instagram">
                     <i class="fab fa-instagram"></i>
+                    <span class="tooltip">Instagram</span>
                 </a>
                 <a href="https://www.linkedin.com/in/nicolerenney/" target="_blank" aria-label="LinkedIn">
                     <i class="fab fa-linkedin-in"></i>
+                    <span class="tooltip">LinkedIn</span>
                 </a>
                 <a href="mailto:info@nixonmarketing.co.za" aria-label="Email">
                     <i class="far fa-envelope"></i>
+                    <span class="tooltip">Email</span>
                 </a>
                 <a href="https://github.com/nixon-marketing/www" target="_blank" aria-label="GitHub">
                     <i class="fab fa-github"></i>
+                    <span class="tooltip">GitHub</span>
                 </a>
             </div>
         </div>
         
         <footer>
-            <p>&copy; 2025 Nixon Marketing. All rights reserved.</p>
-            <p>Made with ❤️ in South Africa</p>
+            <p>&copy; <span id="current-year">2025</span> Nixon Marketing. All rights reserved.</p>
+            <p class="typing-text">Made with ❤️ in South Africa</p>
+            <p class="powered-by">Powered by <span class="skunkworks">www.skunkworksdigital.co.za</span></p>
         </footer>
     </div>
-</body>
-</html>
+
+    <!-- Particles.js for background animation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/particles.js/2.0.0/particles.min.js"></script>
+    
+    <script>
+        // Initialize particles.js
+        document.addEventListener('DOMContentLoaded', function() {
+            if (typeof particlesJS !== 'undefined') {
+                particlesJS("particles-js", {
+                    particles: {
+                        number: { value: 80, density: { enable: true, value_area: 800 } },
+                        color: { value: "#f9a826" },
+                        shape: { type: "circle" },
+                        opacity: { value: 0.5, random: true },
+                        size: { value: 3, random: true },
+                        line_linked: {
+                            enable: true,
+                            distance: 150,
+                            color: "#f9a826",
+                            opacity: 0.2,
+                            width: 1
+                        },
+                        move: {
+                            enable: true,
+                            speed: 2,
+                            direction: "none",
+                            random: true,
+                            out_mode: "out"
+                        }
+                    },
+                    interactivity: {
+                        detect_on: "canvas",
+                        events: {
+                            onhover: { enable: true, mode: "grab" },
+                            onclick: { enable: true, mode: "push" },
+                            resize: true
+                        },
+                        modes: {
+                            grab: { distance: 140, line_linked: { opacity: 0.5 } },
+                            push: { particles_nb: 4 }
+                        }
+                    },
+                    retina_detect: true
+                });
+            }
+            
+            // Set current year in footer
+            document.getElementById('current-year').textContent = new Date().getFullYear();
+            
+            // Add floating animation to some elements
+            document.getElementById('logo').classList.add('floating');
+        });
+        
+        // Toggle value proposition cards
+        function toggleValueProp(element) {
+            const allValueProps = document.querySelectorAll('.value-prop');
+            allValueProps.forEach(prop => {
+                if (prop !== element) {
+                    prop.classList.remove('expanded');
+                }
+            });
+            
+            element.classList.toggle('expanded');
+        }
+        
+        // Logo click animation
+        function logoClick() {
+            const logo = document.getElementById('logo');
+            logo.style.transform = 'scale(0.8)';
+            setTimeout(() => {
+                logo.style.transform = 'scale(1.2)';
+                setTimeout(() => {
+                    logo.style.transform = '';
+                }, 200);
+            }, 200);
+        }
+        
+        // Profile click animation
+        function profileClick() {
+            const profile = document.getElementById('profile-img');
+            profile.style.transform = 'scale(1.2) rotate(15deg)';
+            setTimeout(() => {
+                profile.style.transform = '';
+            }, 500);
+        }
+        
+        // Function to handle form submission
+        function submitForm(event) {
+            event.preventDefault();
+            
+            const emailInput = document.getElementById('email-input');
+            const email = emailInput.value.trim();
+            const successMessage = document.getElementById('success-message');
+            const errorMessage = document.getElementById('error-message');
+            
+            // Simple email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                errorMessage.textContent = "Please enter a valid email address.";
+                errorMessage.classList.add('show-message');
+                setTimeout(() => {
+                    errorMessage.classList.remove('show-message');
+                }, 3000);
+                return;
+            }
+            
+            // In a real implementation, you would send this to your server
+            // For now, we'll simulate success
+            console.log(`Subscription email: ${email}`);
+            console.log(`Would be sending to: nr.tennent@gmail.com and nicole@nixonmarketing.co.za`);
+            
+            // Add structured data for the subscription
+            try {
+                // Create a hidden JSON-LD script for the subscription event
+                const subscriptionEvent = {
+                    "@context": "https://schema.org",
+                    "@type": "InteractAction",
+                    "object": {
+                        "@type": "EmailMessage",
+                        "email": email,
+                        "description": "Website launch notification subscription"
+                    },
+                    "agent": {
+                        "@type": "Person",
+                        "email": email
+                    },
+                    "participant": {
+                        "@type": "Organization",
+                        "name": "Nixon Marketing",
+                        "email": "info@nixonmarketing.co.za"
+                    }
+                };
+                
+                // You would typically send this data to your server
+                console.log("Structured data for subscription:", subscriptionEvent);
+            } catch (e) {
+                console.error("Error creating structured data:", e);
+            }
+            
+            // Show success message
+            emailInput.value = '';
+            successMessage.classList.add('show-message');
+            setTimeout(() => {
+                successMessage.classList.remove('show-message');
+            }, 3000);
+        }
+        
+        // Progress bar animation
+        document.addEventListener('DOMContentLoaded', function() {
+            const progressBar = document.getElementById('progress-bar-fill');
+            const progressText = document.getElementById('progress-percentage');
+            
+            // Make progress clickable to simulate progress updates
+            const progressContainer = document.querySelector('.progress-container');
+            progressContainer.addEventListener('click', function() {
+                const currentProgress = parseInt(progressText.textContent);
+                const newProgress = (currentProgress +
